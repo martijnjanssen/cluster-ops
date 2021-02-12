@@ -10,4 +10,4 @@ spec:
     values:
         ingress:
             hosts:
-                - podinfo.production
+                - podinfo.martijnj.nl
