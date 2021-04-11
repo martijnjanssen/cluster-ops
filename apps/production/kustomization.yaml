@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
     - ../base/podinfo
     - ../base/pihole
+    - ../base/bite
 patchesStrategicMerge:
     - podinfo-values.yaml
     - pihole-values.yaml
+    - postgresql-values.yaml
