@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bite
+  namespace: bite
+  # labels:
+  # app: lancie-api
+  # annotations:
+  # fluxcd.io/automated: 'true'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: bite
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: bite
+      labels:
+        app: bite
+    spec:
+      containers:
+        - name: bite
+          # image: quay.io/areafiftylan/lancie-api:45
+          image: ghcr.io/martijnjanssen/bite:latest
+          imagePullPolicy: IfNotPresent
+          env:
+          # - name: SPRING_MAIL_HOST
+          #   value: ch.tudelft.nl
+          # - name: SPRING_DATASOURCE_PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       key: datasource-password
+          #       name: lancie-api
+          ports:
+            - containerPort: 5051
+              protocol: TCP
+            - containerPort: 5081
+              protocol: TCP
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 20
+          #   successThreshold: 1
+          #   timeoutSeconds: 1
+          # readinessProbe:
+          #   failureThreshold: 5
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 5
+          #   successThreshold: 1
+          #   timeoutSeconds: 1

@@ -3,4 +3,6 @@ kind: Kustomization
 namespace: bite
 resources:
     - namespace.yaml
-    - release.yaml
+    - bite-deploy.yaml
+    - bite-service.yaml
+    - postgres-release.yaml
