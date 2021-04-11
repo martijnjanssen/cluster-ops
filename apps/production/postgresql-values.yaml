@@ -8,4 +8,13 @@ spec:
         spec:
             version: ">=1.0.0"
     values:
+        postgresqlUsername: biteUser
+        postgresqlPassword: testing
         postgresqlDatabase: bite
+        persistence:
+            size: 1Gi
+        initdbScripts:
+            init-01.sh: |
+                #!/bin/bash
+                export PGPASSWORD=$POSTGRESQL_PASSWORD
+                psql -U postgres bite -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"

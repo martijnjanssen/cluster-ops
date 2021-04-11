@@ -5,4 +5,5 @@ resources:
     - namespace.yaml
     - bite-deploy.yaml
     - bite-service.yaml
-    - postgres-release.yaml
+    - bite-ingress.yaml
+    - postgresql-release.yaml

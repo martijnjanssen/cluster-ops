@@ -27,8 +27,25 @@ spec:
           image: ghcr.io/martijnjanssen/bite:latest
           imagePullPolicy: IfNotPresent
           env:
-          # - name: SPRING_MAIL_HOST
-          #   value: ch.tudelft.nl
+            - name: BITE_PORT
+              value: "5051"
+            - name: BITE_DBHOST
+              value: postgresql
+            - name: BITE_DBPORT
+              value: "5432"
+            - name: BITE_DBUSER
+              value: biteUser
+              # TODO: make dbpassword secret
+            - name: BITE_DBPASSWORD
+              value: testing
+            - name: BITE_DBNAME
+              value: bite
+            # TODO: enable sealedsecrets
+            # - name: BITE_SENDINBLUEKEY
+            # value:
+            - name: BITE_MAILCALLBACKURL
+              value: https://web.bite.martijnj.nl
+
           # - name: SPRING_DATASOURCE_PASSWORD
           #   valueFrom:
           #     secretKeyRef:

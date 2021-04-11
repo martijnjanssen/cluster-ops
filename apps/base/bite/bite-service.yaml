@@ -7,10 +7,14 @@ metadata:
         app: bite
 spec:
     type: LoadBalancer
-    loadBalancerIP: 192.168.1.3
     ports:
-        - port: 80
+        - name: grpc
+          port: 80
           protocol: TCP
           targetPort: 5051
+        - name: web
+          port: 81
+          protocol: TCP
+          targetPort: 5081
     selector:
         app: bite
