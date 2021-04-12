@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1alpha1
 kind: ImageRepository
 metadata:
     name: bite
-    namespace: flux-system
+    namespace: bite
 spec:
     image: ghcr.io/martijnjanssen/bite
     interval: 1m0s

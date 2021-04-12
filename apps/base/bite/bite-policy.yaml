@@ -2,10 +2,12 @@ apiVersion: image.toolkit.fluxcd.io/v1alpha1
 kind: ImagePolicy
 metadata:
     name: bite
-    namespace: flux-system
+    namespace: bite
 spec:
     imageRepositoryRef:
         name: bite
+    filterTags:
+        pattern: "^[0-9]*$"
     policy:
         numerical:
             order: asc
