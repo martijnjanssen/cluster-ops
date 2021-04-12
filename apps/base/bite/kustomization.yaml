@@ -9,3 +9,4 @@ resources:
     - bite-registry.yaml
     - bite-policy.yaml
     - postgresql-release.yaml
+    - ghcr-secret.yaml

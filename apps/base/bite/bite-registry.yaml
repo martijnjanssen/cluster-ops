@@ -6,3 +6,5 @@ metadata:
 spec:
     image: ghcr.io/martijnjanssen/bite
     interval: 1m0s
+    secretRef:
+        name: ghcr-cred
