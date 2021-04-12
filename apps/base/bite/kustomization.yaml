@@ -6,5 +6,4 @@ resources:
     - bite-deploy.yaml
     - bite-service.yaml
     - bite-ingress.yaml
-    - bite-policy.yaml
     - postgresql-release.yaml
