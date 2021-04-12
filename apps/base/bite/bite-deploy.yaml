@@ -23,8 +23,7 @@ spec:
     spec:
       containers:
         - name: bite
-          # image: quay.io/areafiftylan/lancie-api:45
-          image: ghcr.io/martijnjanssen/bite:latest
+          image: ghcr.io/martijnjanssen/bite:12 # {"$imagepolicy": "bite:bite"}
           imagePullPolicy: IfNotPresent
           env:
             - name: BITE_PORT
