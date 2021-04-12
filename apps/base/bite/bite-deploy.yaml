@@ -3,18 +3,14 @@ kind: Deployment
 metadata:
   name: bite
   namespace: bite
-  # labels:
-  # app: lancie-api
-  # annotations:
-  # fluxcd.io/automated: 'true'
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: bite
-  strategy:
-    type: Recreate
   template:
     metadata:
       name: bite

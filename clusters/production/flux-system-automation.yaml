@@ -11,10 +11,28 @@ spec:
     commit:
         authorEmail: fluxcdbot@users.noreply.github.com
         authorName: fluxcdbot
-        messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
+        messageTemplate: |
+            Automated image update
+
+            Automation name: {{ .AutomationObject }}
+
+            Files:
+            {{ range $filename, $_ := .Updated.Files -}}
+            - {{ $filename }}
+            {{ end -}}
+
+            Objects:
+            {{ range $resource, $_ := .Updated.Objects -}}
+            - {{ $resource.Kind }} {{ $resource.Name }}
+            {{ end -}}
+
+            Images:
+            {{ range .Updated.Images -}}
+            - {{.}}
+            {{ end -}}
     interval: 1m0s
     push:
         branch: main
     update:
-        path: ./apps/base
+        path: ./apps
         strategy: Setters
