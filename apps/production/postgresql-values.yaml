@@ -8,9 +8,9 @@ spec:
         spec:
             version: ">=1.0.0"
     values:
-        postgresqlUsername: biteUser
-        postgresqlPassword: testing
+        postgresqlUsername: bite
         postgresqlDatabase: bite
+        existingSecret: postgres-password
         persistence:
             size: 1Gi
         initdbScripts:

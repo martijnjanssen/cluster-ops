@@ -28,24 +28,22 @@ spec:
               value: postgresql
             - name: BITE_DBPORT
               value: "5432"
-            - name: BITE_DBUSER
-              value: biteUser
-              # TODO: make dbpassword secret
-            - name: BITE_DBPASSWORD
-              value: testing
             - name: BITE_DBNAME
               value: bite
-            # TODO: enable sealedsecrets
-            # - name: BITE_SENDINBLUEKEY
-            # value:
+            - name: BITE_DBUSER
+              value: bite
+            - name: BITE_DBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgresql-password
+                  name: postgres-password
+            - name: BITE_SENDINBLUEKEY
+              valueFrom:
+                secretKeyRef:
+                  key: sendinbluekey
+                  name: sendinblue-secret
             - name: BITE_MAILCALLBACKURL
               value: https://web.bite.martijnj.nl
-
-          # - name: SPRING_DATASOURCE_PASSWORD
-          #   valueFrom:
-          #     secretKeyRef:
-          #       key: datasource-password
-          #       name: lancie-api
           ports:
             - containerPort: 5051
               protocol: TCP
