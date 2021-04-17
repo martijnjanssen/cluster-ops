@@ -22,6 +22,8 @@ spec:
           image: ghcr.io/martijnjanssen/bite:12 # {"$imagepolicy": "bite:bite"}
           imagePullPolicy: IfNotPresent
           env:
+            - name: BITE_PROFILE
+              value: "dev"
             - name: BITE_PORT
               value: "5051"
             - name: BITE_DBHOST
