@@ -22,8 +22,6 @@ spec:
           image: ghcr.io/martijnjanssen/bite:12
           imagePullPolicy: IfNotPresent
           env:
-            - name: BITE_PROFILE
-              value: "dev"
             - name: BITE_PORT
               value: "5051"
             - name: BITE_DBHOST
@@ -46,11 +44,11 @@ spec:
                   name: sendinblue-secret
             - name: BITE_MAILCALLBACKURL
               value: https://web.bite.martijnj.nl
-          ports:
-            - containerPort: 5051
-              protocol: TCP
-            - containerPort: 5081
-              protocol: TCP
+          # ports:
+          #   - containerPort: 5051
+          #     protocol: TCP
+          #   - containerPort: 5081
+          #     protocol: TCP
           # livenessProbe:
           #   failureThreshold: 3
           #   httpGet:

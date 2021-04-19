@@ -2,8 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bite
-  # annotations:
-  # kubernetes.io/ingress.class: traefik
+  annotations:
+    ingress.kubernetes.io/protocol: h2c
 spec:
   rules:
     - host: grpc.bite.martijnj.nl
