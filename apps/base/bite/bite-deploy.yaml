@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: bite
-          image: ghcr.io/martijnjanssen/bite:12 # {"$imagepolicy": "bite:bite"}
+          image: ghcr.io/martijnjanssen/bite:12
           imagePullPolicy: IfNotPresent
           env:
             - name: BITE_PROFILE

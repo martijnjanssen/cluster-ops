@@ -8,3 +8,7 @@ resources:
 patchesStrategicMerge:
     - bite-values.yaml
     - postgresql-values.yaml
+images:
+    - name: ghcr.io/martijnjanssen/bite
+      newName: ghcr.io/martijnjanssen/bite
+      newTag: "12" # {"$imagepolicy": "staging-bite:bite:tag"}

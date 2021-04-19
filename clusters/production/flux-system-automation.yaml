@@ -1,13 +1,13 @@
 apiVersion: image.toolkit.fluxcd.io/v1alpha1
 kind: ImageUpdateAutomation
 metadata:
-    name: flux-system
-    namespace: flux-system
+    name: bite
+    namespace: staging-bite
 spec:
     checkout:
         branch: main
         gitRepositoryRef:
-            name: flux-system
+            name: apps
     commit:
         authorEmail: fluxcdbot@users.noreply.github.com
         authorName: fluxcdbot
@@ -34,5 +34,5 @@ spec:
     push:
         branch: main
     update:
-        path: ./apps
+        path: ./apps/staging
         strategy: Setters
