@@ -1,20 +1,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: bite
-    namespace: bite
-    labels:
-        app: bite
+  name: bite
+  # namespace: bite
+  labels:
+    app: bite
 spec:
-    type: LoadBalancer
-    ports:
-        - name: grpc
-          port: 80
-          protocol: TCP
-          targetPort: 5051
-        - name: web
-          port: 81
-          protocol: TCP
-          targetPort: 5081
-    selector:
-        app: bite
+  type: LoadBalancer
+  ports:
+    - name: grpc
+      port: 80
+      protocol: TCP
+      targetPort: 5051
+    - name: web
+      port: 81
+      protocol: TCP
+      targetPort: 5081
+  selector:
+    app: bite

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bite
-  namespace: bite
+  # namespace: bite
 spec:
   replicas: 1
   strategy:

@@ -1,10 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: bite
 resources:
-    - ../base/podinfo
-    - ../base/pihole
-    - ./bite
+    - ../../base/bite
     - ./secrets
+    - namespace.yaml
 patchesStrategicMerge:
-    - podinfo-values.yaml
-    - pihole-values.yaml
+    - postgresql-values.yaml

@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1alpha1
 kind: ImagePolicy
 metadata:
     name: bite
-    namespace: bite
+    # namespace: bite
 spec:
     imageRepositoryRef:
         name: bite
