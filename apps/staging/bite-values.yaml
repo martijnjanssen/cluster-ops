@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bite
+  namespace: bite
+spec:
+  template:
+    spec:
+      containers:
+        - name: bite
+          env:
+            - name: BITE_MAILCALLBACKURL
+              value: https://web.staging.bite.martijnj.nl
+            - name: BITE_DBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgresql-password
+                  name: staging-postgres-password
+            - name: BITE_SENDINBLUEKEY
+              valueFrom:
+                secretKeyRef:
+                  key: sendinbluekey
+                  name: staging-sendinblue-secret
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bite
+spec:
+  rules:
+    - host: grpc.staging.bite.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: bite
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+    - host: web.staging.bite.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: bite
+                port:
+                  number: 81
+            path: /
+            pathType: ImplementationSpecific

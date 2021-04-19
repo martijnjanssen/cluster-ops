@@ -10,7 +10,7 @@ spec:
     values:
         postgresqlUsername: bite
         postgresqlDatabase: bite
-        existingSecret: postgres-password
+        existingSecret: staging-postgres-password
         persistence:
             size: 100Mi
         initdbScripts:
