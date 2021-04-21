@@ -5,8 +5,8 @@ metadata:
   # namespace: bite
   labels:
     app: bite
-  annotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: h2c
+  # annotations:
+  # traefik.ingress.kubernetes.io/service.serversscheme: h2c
 spec:
   type: LoadBalancer
   ports:

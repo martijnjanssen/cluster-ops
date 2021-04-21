@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: bite
   annotations:
-    # ingress.kubernetes.io/protocol: h2c
+    ingress.kubernetes.io/protocol: h2c
     kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
