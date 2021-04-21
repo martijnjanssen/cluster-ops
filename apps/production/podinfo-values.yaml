@@ -9,5 +9,12 @@ spec:
             version: ">=1.0.0"
     values:
         ingress:
+            annotations:
+                kubernetes.io/ingress.class: traefik
+                cert-manager.io/cluster-issuer: letsencrypt-prod
+            tls:
+                - hosts:
+                      - podinfo.martijnj.nl
+                  secretName: podinfo-martijnj-nl-tls
             hosts:
                 - podinfo.martijnj.nl
