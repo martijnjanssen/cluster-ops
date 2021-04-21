@@ -7,7 +7,7 @@ spec:
     checkout:
         branch: main
         gitRepositoryRef:
-            name: apps
+            name: flux-system
     commit:
         authorEmail: fluxcdbot@users.noreply.github.com
         authorName: fluxcdbot
