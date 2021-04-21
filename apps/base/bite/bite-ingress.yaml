@@ -4,6 +4,8 @@ metadata:
   name: bite
   annotations:
     ingress.kubernetes.io/protocol: h2c
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
     - host: grpc.bite.martijnj.nl
@@ -26,3 +28,8 @@ spec:
                   number: 81
             path: /
             pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - grpc.bite.martijnj.nl
+        - web.bite.martijnj.nl
+      secretName: bite-martijnj-nl-tls

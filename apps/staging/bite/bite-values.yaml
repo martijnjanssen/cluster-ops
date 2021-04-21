@@ -47,3 +47,8 @@ spec:
                   number: 81
             path: /
             pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - grpc.staging.bite.martijnj.nl
+        - web.staging.bite.martijnj.nl
+      secretName: bite-staging-martijnj-nl-tls
