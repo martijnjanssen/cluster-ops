@@ -10,6 +10,7 @@ spec:
     values:
         ingress:
             annotations:
+                ingress.kubernetes.io/ssl-redirect: "true"
                 kubernetes.io/ingress.class: traefik
                 cert-manager.io/cluster-issuer: letsencrypt-prod
             tls:
