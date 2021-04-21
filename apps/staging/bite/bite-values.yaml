@@ -32,7 +32,7 @@ spec:
         paths:
           - backend:
               service:
-                name: bite
+                name: bite-grpc
                 port:
                   number: 80
             path: /
@@ -42,9 +42,9 @@ spec:
         paths:
           - backend:
               service:
-                name: bite
+                name: bite-web
                 port:
-                  number: 81
+                  number: 80
             path: /
             pathType: ImplementationSpecific
   tls:

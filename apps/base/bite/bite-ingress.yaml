@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: bite
   annotations:
-    ingress.kubernetes.io/protocol: h2c
+    # ingress.kubernetes.io/protocol: h2c
     kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -13,7 +13,7 @@ spec:
         paths:
           - backend:
               service:
-                name: bite
+                name: bite-grpc
                 port:
                   number: 80
             path: /
@@ -23,9 +23,9 @@ spec:
         paths:
           - backend:
               service:
-                name: bite
+                name: bite-web
                 port:
-                  number: 81
+                  number: 80
             path: /
             pathType: ImplementationSpecific
   tls:
