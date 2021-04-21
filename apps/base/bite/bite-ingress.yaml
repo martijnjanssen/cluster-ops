@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bite
+  name: bite-grpc
   annotations:
     ingress.kubernetes.io/protocol: h2c
     kubernetes.io/ingress.class: traefik
@@ -18,6 +18,20 @@ spec:
                   number: 80
             path: /
             pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - grpc.bite.martijnj.nl
+      secretName: grpc-bite-martijnj-nl-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bite-web
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
     - host: web.bite.martijnj.nl
       http:
         paths:
@@ -30,6 +44,5 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - grpc.bite.martijnj.nl
         - web.bite.martijnj.nl
-      secretName: bite-martijnj-nl-tls
+      secretName: web-bite-martijnj-nl-tls
