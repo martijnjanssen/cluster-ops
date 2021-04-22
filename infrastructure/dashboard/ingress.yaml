@@ -3,9 +3,14 @@ kind: Ingress
 metadata:
     name: kubernetes-dashboard
     namespace: kubernetes-dashboard
+    labels:
+        k8s-app: kubernetes-dashboard
     annotations:
         kubernetes.io/ingress.class: traefik
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        ingress.kubernetes.io/auth-tls-insecure: "true"
+        ingress.kubernetes.io/protocol: https
+        # ingress.kubernetes.io/auth-tls-secret: dashboard-martijnj-nl-tls
+        # ingress.kubernetes.io/ssl-redirect: "true"
 spec:
     rules:
         - host: dashboard.martijnj.nl

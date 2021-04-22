@@ -4,3 +4,4 @@ resources:
     - dashboard.yaml
     - roles.yaml
     - ingress.yaml
+    - certificate.yaml
