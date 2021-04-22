@@ -1,10 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+    labels:
+        k8s-app: kubernetes-dashboard
     name: kubernetes-dashboard
     namespace: kubernetes-dashboard
 spec:
+    selector:
+        matchLabels:
+            k8s-app: kubernetes-dashboard
     template:
+        metadata:
+            labels:
+                k8s-app: kubernetes-dashboard
         spec:
             containers:
                 - name: kubernetes-dashboard

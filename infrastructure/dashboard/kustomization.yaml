@@ -4,5 +4,3 @@ resources:
     - dashboard.yaml
     - roles.yaml
     - ingress.yaml
-patchesStrategicMerge:
-    - dashboard-skiplogin.yaml

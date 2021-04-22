@@ -5,10 +5,10 @@ metadata:
     namespace: kubernetes-dashboard
     annotations:
         kubernetes.io/ingress.class: traefik
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
     rules:
-        - host: dashboard.home.nix
+        - host: dashboard.martijnj.nl
           http:
               paths:
                   - backend:
@@ -18,7 +18,7 @@ spec:
                                 number: 443
                     path: /
                     pathType: ImplementationSpecific
-    # tls:
-    #   - hosts:
-    #       - grpc.bite.martijnj.nl
-    #     secretName: grpc-bite-martijnj-nl-tls
+    tls:
+        - hosts:
+              - dashboard.martijnj.nl
+          secretName: dashboard-martijnj-nl-tls
