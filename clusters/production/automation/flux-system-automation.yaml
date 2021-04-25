@@ -1,8 +1,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1alpha2
 kind: ImageUpdateAutomation
 metadata:
-    name: bite
-    namespace: staging-bite
+    name: flux-system
+    namespace: flux-system
 spec:
     interval: 1m0s
     sourceRef:
@@ -38,5 +38,5 @@ spec:
         push:
             branch: main
     update:
-        path: ./apps/staging
+        path: ./apps
         strategy: Setters
