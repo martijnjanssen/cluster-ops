@@ -4,7 +4,7 @@ resources:
     - ../base/podinfo
     - ../base/pihole
     - ./bite
-    - ./secrets
+    # - ./secrets
 patchesStrategicMerge:
     - podinfo-values.yaml
     - pihole-values.yaml
