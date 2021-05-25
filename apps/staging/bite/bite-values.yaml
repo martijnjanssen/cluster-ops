@@ -22,6 +22,18 @@ spec:
                 secretKeyRef:
                   key: sendinbluekey
                   name: staging-sendinblue-secret
+            - name: BITE_AWS_BUCKETNAME
+              value: bite-staging-recipes-images
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: access-key-id
+                  name: staging-aws-access
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: secret-access-key
+                  name: staging-aws-access
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

@@ -44,6 +44,20 @@ spec:
                   name: sendinblue-secret
             - name: BITE_MAILCALLBACKURL
               value: https://web.bite.martijnj.nl
+            - name: BITE_AWS_SESSIONREGION
+              value: eu-central-1
+            - name: BITE_AWS_BUCKETNAME
+              value: bite-production-recipes-images
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: access-key-id
+                  name: aws-access
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: secret-access-key
+                  name: aws-access
           # ports:
           #   - containerPort: 5051
           #     protocol: TCP
