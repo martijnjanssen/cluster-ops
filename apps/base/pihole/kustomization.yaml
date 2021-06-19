@@ -4,4 +4,3 @@ namespace: pihole
 resources:
     - namespace.yaml
     - release.yaml
-    - pihole-webpassword.yaml

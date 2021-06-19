@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: staging-bite
 resources:
 - ../../base/bite
-# - ./secrets
+- ./secrets
 - namespace.yaml
 patchesStrategicMerge:
 - bite-values.yaml

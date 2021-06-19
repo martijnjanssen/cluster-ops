@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-    - ../base/podinfo
-    - ../base/pihole
-    - ./bite
-    # - ./secrets
+  - ../base/podinfo
+  - ../base/pihole
+  - ./bite
+  - ./secrets
 patchesStrategicMerge:
-    - podinfo-values.yaml
-    - pihole-values.yaml
+  - podinfo-values.yaml
+  - pihole-values.yaml

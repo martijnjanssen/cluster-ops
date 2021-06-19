@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: bite
 resources:
     - ../../base/bite
-    # - ./secrets
+    - ./secrets
     - namespace.yaml
 patchesStrategicMerge:
     - postgresql-values.yaml

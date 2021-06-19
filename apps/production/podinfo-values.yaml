@@ -6,7 +6,7 @@ metadata:
 spec:
     chart:
         spec:
-            version: ">=1.0.0"
+            version: "6.x.x"
     values:
         ingress:
             annotations:
@@ -18,4 +18,7 @@ spec:
                       - podinfo.martijnj.nl
                   secretName: podinfo-martijnj-nl-tls
             hosts:
-                - podinfo.martijnj.nl
+                - host: podinfo.martijnj.nl
+                  paths:
+                      - path: /
+                        pathType: ImplementationSpecific
