@@ -2,13 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: staging-bite
 resources:
-  - ../../base/bite
-  - ./secrets
-  - namespace.yaml
+- ../../base/bite
+- ./secrets
+- namespace.yaml
 patchesStrategicMerge:
-  - bite-values.yaml
-  - postgresql-values.yaml
+- bite-values.yaml
+- postgresql-values.yaml
 images:
-  - name: ghcr.io/martijnjanssen/bite
-    newName: ghcr.io/martijnjanssen/bite
-    newTag: "42" # {"$imagepolicy": "flux-system:bite:tag"}
+- name: ghcr.io/martijnjanssen/bite
+  newName: ghcr.io/martijnjanssen/bite
+  newTag: "48" # {"$imagepolicy": "flux-system:bite:tag"}
