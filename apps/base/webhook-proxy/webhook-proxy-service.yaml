@@ -1,31 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webhook-proxy-grpc
+  name: webhook-proxy
   labels:
     app: webhook-proxy
 spec:
   type: LoadBalancer
   ports:
-    - name: grpc
-      port: 80
+    - port: 80
       protocol: TCP
       targetPort: 8080
-  selector:
-    app: webhook-proxy
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webhook-proxy-web
-  labels:
-    app: webhook-proxy
-spec:
-  type: LoadBalancer
-  ports:
-    - name: web
-      port: 80
-      protocol: TCP
-      targetPort: 5081
   selector:
     app: webhook-proxy
