@@ -9,3 +9,7 @@ resources:
 patchesStrategicMerge:
   - podinfo-values.yaml
   - pihole-values.yaml
+images:
+  - name: ghcr.io/martijnjanssen/webhook-proxy
+    newName: ghcr.io/martijnjanssen/webhook-proxy
+    newTag: "5" # {"$imagepolicy": "flux-system:webhook-proxy:tag"}
