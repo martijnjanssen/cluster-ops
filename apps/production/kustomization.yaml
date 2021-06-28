@@ -4,6 +4,7 @@ resources:
   - ../base/podinfo
   - ../base/pihole
   - ./bite
+  - ./webhook-proxy
   - ./secrets
 patchesStrategicMerge:
   - podinfo-values.yaml

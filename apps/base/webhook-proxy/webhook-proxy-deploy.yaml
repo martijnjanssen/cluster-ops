@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-proxy
+  # namespace: webhook-proxy
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: webhook-proxy
+  template:
+    metadata:
+      name: webhook-proxy
+      labels:
+        app: webhook-proxy
+    spec:
+      containers:
+        - name: webhook-proxy
+          image: ghcr.io/martijnjanssen/webhook-proxy:5
+          imagePullPolicy: IfNotPresent
+          # ports:
+          #   - containerPort: 5051
+          #     protocol: TCP
+          #   - containerPort: 5081
+          #     protocol: TCP
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 20
+          #   successThreshold: 1
+          #   timeoutSeconds: 1
+          # readinessProbe:
+          #   failureThreshold: 5
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 5
+          #   successThreshold: 1
+          #   timeoutSeconds: 1
