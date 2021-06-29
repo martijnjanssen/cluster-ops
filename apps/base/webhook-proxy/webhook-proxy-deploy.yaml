@@ -21,6 +21,17 @@ spec:
         - name: webhook-proxy
           image: ghcr.io/martijnjanssen/webhook-proxy:5
           imagePullPolicy: IfNotPresent
+          env:
+            - name: TELEGRAM_CHAT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: chat-id
+                  name: telegram-access
+            - name: TELEGRAM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: telegram-access
           # ports:
           #   - containerPort: 5051
           #     protocol: TCP
