@@ -4,7 +4,7 @@ metadata:
   name: generic-provider
   namespace: flux-system
 spec:
-  type: generic
+  type: slack
   channel: general
   secretRef:
     name: webhook-address
