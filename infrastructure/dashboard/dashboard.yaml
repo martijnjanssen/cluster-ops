@@ -20,8 +20,9 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   ports:
-    - port: 443
-      targetPort: 8443
+    - port: 80
+      protocol: TCP
+      targetPort: 9090
   selector:
     k8s-app: kubernetes-dashboard
 ---
@@ -179,20 +180,24 @@ spec:
     spec:
       containers:
         - args:
-            - --auto-generate-certificates
+            # Don't auto-generate certificates, use http
+            # - --auto-generate-certificates
             - --namespace=kubernetes-dashboard
+            - --insecure-bind-address=0.0.0.0
+            - --insecure-port=9090
+            - --enable-insecure-login
           image: kubernetesui/dashboard:v2.3.1
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
               path: /
-              port: 8443
-              scheme: HTTPS
+              port: 9090
+              scheme: HTTP
             initialDelaySeconds: 30
             timeoutSeconds: 30
           name: kubernetes-dashboard
           ports:
-            - containerPort: 8443
+            - containerPort: 9090
               protocol: TCP
           securityContext:
             allowPrivilegeEscalation: false
