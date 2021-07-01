@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - webhook-proxy-deploy.yaml
   - webhook-proxy-service.yaml
-  - webhook-proxy-ingress.yaml
