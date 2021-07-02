@@ -1,28 +1,28 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-    name: pihole
-    namespace: pihole
+  name: pihole
+  namespace: pihole
 spec:
-    chart:
-        spec:
-            version: ">=1.0.0"
-    values:
-        ingress:
-            annotations:
-                ingress.kubernetes.io/ssl-redirect: "true"
-                kubernetes.io/ingress.class: traefik
-                cert-manager.io/cluster-issuer: letsencrypt-prod
-            tls:
-                - hosts:
-                      - pihole.martijnj.nl
-                  secretName: pihole-martijnj-nl-tls
-            hosts:
-                - pihole.martijnj.nl
-        DNS1: "1.1.1.1"
-        DNS2: "1.0.0.1"
-        admin:
-            existingSecret: pihole-webpassword
-        serviceDns:
-            loadBalancerIP: 192.168.1.3
-            type: LoadBalancer
+  chart:
+    spec:
+      version: ">=1.0.0"
+  values:
+    ingress:
+      annotations:
+        ingress.kubernetes.io/ssl-redirect: "true"
+        kubernetes.io/ingress.class: traefik
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      tls:
+        - hosts:
+            - pihole.martijnj.nl
+          secretName: pihole-martijnj-nl-tls
+      hosts:
+        - pihole.martijnj.nl
+    DNS1: "1.1.1.1"
+    DNS2: "1.0.0.1"
+    admin:
+      existingSecret: pihole-webpassword
+    serviceDns:
+      loadBalancerIP: 192.168.1.3
+      type: LoadBalancer

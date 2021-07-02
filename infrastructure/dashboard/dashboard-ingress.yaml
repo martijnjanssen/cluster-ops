@@ -4,7 +4,7 @@ metadata:
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
   annotations:
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:

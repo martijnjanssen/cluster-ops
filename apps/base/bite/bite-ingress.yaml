@@ -3,8 +3,9 @@ kind: Ingress
 metadata:
   name: bite-grpc
   annotations:
-    ingress.kubernetes.io/protocol: h2c
     kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/protocol: h2c
+    ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
@@ -29,6 +30,7 @@ metadata:
   name: bite-web
   annotations:
     kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
