@@ -26,24 +26,49 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bite-web
+  name: bite-http
   annotations:
     kubernetes.io/ingress.class: traefik
     ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-    - host: web.bite.martijnj.nl
+    - host: http.bite.martijnj.nl
       http:
         paths:
           - backend:
               service:
-                name: bite-web
+                name: bite-http
                 port:
                   number: 80
             path: /
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - web.bite.martijnj.nl
-      secretName: web-bite-martijnj-nl-tls
+        - http.bite.martijnj.nl
+      secretName: http-bite-martijnj-nl-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bite-frontend
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: bite.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: bite-frontend
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - bite.martijnj.nl
+      secretName: bite-martijnj-nl-tls

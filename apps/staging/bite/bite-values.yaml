@@ -59,20 +59,41 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bite-web
+  name: bite-http
 spec:
   rules:
-    - host: web.staging.bite.martijnj.nl
+    - host: http.staging.bite.martijnj.nl
       http:
         paths:
           - backend:
               service:
-                name: bite-web
+                name: bite-http
                 port:
                   number: 80
             path: /
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - web.staging.bite.martijnj.nl
-      secretName: web-staging-bite-martijnj-nl-tls
+        - http.staging.bite.martijnj.nl
+      secretName: http-staging-bite-martijnj-nl-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bite-frontend
+spec:
+  rules:
+    - host: staging.bite.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: bite-frontend
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - staging.bite.martijnj.nl
+      secretName: staging-bite-martijnj-nl-tls

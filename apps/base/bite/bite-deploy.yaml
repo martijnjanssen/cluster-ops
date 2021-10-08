@@ -83,3 +83,27 @@ spec:
           #   periodSeconds: 5
           #   successThreshold: 1
           #   timeoutSeconds: 1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bite-frontend
+  # namespace: bite
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: bite-frontend
+  template:
+    metadata:
+      name: bite-frontend
+      labels:
+        app: bite-frontend
+    spec:
+      containers:
+        - name: bite-frontend
+          image: ghcr.io/martijnjanssen/bite-frontend:71
+          imagePullPolicy: IfNotPresent

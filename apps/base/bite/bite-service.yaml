@@ -17,15 +17,31 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bite-web
+  name: bite-http
   labels:
     app: bite
 spec:
   type: LoadBalancer
   ports:
-    - name: web
+    - name: http
       port: 80
       protocol: TCP
       targetPort: 5081
   selector:
     app: bite
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bite-frontend
+  labels:
+    app: bite-frontend
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: bite-frontend
