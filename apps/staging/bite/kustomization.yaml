@@ -11,4 +11,4 @@ patchesStrategicMerge:
 images:
 - name: ghcr.io/martijnjanssen/bite
   newName: ghcr.io/martijnjanssen/bite
-  newTag: "60" # {"$imagepolicy": "flux-system:bite:tag"}
+  newTag: "62" # {"$imagepolicy": "flux-system:bite:tag"}
