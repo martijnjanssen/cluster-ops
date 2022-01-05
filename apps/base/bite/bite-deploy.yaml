@@ -43,7 +43,7 @@ spec:
                   key: sendinbluekey
                   name: sendinblue-secret
             - name: BITE_MAILCALLBACKURL
-              value: https://http.bite.martijnj.nl
+              value: https://bite.martijnj.nl
             - name: BITE_AWS_SESSIONREGION
               value: eu-central-1
             - name: BITE_AWS_BUCKETNAME

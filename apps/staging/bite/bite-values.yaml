@@ -11,7 +11,7 @@ spec:
             - name: BITE_PROFILE
               value: "dev"
             - name: BITE_MAILCALLBACKURL
-              value: https://http.staging.bite.martijnj.nl
+              value: https://staging.bite.martijnj.nl
             - name: BITE_DBPASSWORD
               valueFrom:
                 secretKeyRef:
