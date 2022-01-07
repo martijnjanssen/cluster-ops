@@ -8,8 +8,6 @@ spec:
       containers:
         - name: bite
           env:
-            - name: BITE_PROFILE
-              value: "dev"
             - name: BITE_MAILCALLBACKURL
               value: https://staging.bite.martijnj.nl
             - name: BITE_DBPASSWORD
