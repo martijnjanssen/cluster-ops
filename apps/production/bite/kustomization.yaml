@@ -2,8 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: bite
 resources:
-    - ../../base/bite
-    - ./secrets
-    - namespace.yaml
+  - ../../base/bite
+  - ./secrets
+  - bite-forward.yaml
+  - namespace.yaml
 patchesStrategicMerge:
-    - postgresql-values.yaml
+  - postgresql-values.yaml
