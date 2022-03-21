@@ -5,6 +5,6 @@ resources:
   - ../../base/bite
   - ./secrets
   - namespace.yaml
-  - external.yaml
+  - bite-links-ingress.yaml
 patchesStrategicMerge:
   - postgresql-values.yaml

@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bite-external
+  name: bite-links
   annotations:
     kubernetes.io/ingress.class: traefik
     ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-    - host: biteapp.nl
+    - host: links.biteapp.nl
       http:
         paths:
           - backend:
@@ -20,5 +20,5 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - biteapp.nl
-      secretName: biteapp-nl-tls
+        - links.biteapp.nl
+      secretName: links-biteapp-nl-tls
