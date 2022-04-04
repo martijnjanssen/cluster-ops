@@ -82,7 +82,7 @@ metadata:
 spec:
   rules:
     - host: staging.bite.martijnj.nl
-      http: &http_rules
+      http:
         paths:
           - backend:
               service:
@@ -91,10 +91,7 @@ spec:
                   number: 80
             path: /
             pathType: ImplementationSpecific
-    - host: staging.creator.biteapp.nl
-      http: *http_rules
   tls:
     - hosts:
         - staging.bite.martijnj.nl
-        - staging.creator.biteapp.nl
       secretName: staging-bite-martijnj-nl-tls
