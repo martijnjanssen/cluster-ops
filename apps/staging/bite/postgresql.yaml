@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: postgresql
+  namespace: staging-bite
+spec:
+  releaseName: postgresql
+  chart:
+    spec:
+      version: ">=1.0.0"
+      chart: postgresql
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    postgresqlUsername: bite
+    postgresqlDatabase: bite
+    existingSecret: staging-postgres-password
+    persistence:
+      size: 100Mi
+    initdbScripts:
+      init-01.sh: |
+        #!/bin/bash
+        export PGPASSWORD=$POSTGRESQL_PASSWORD
+        psql -U postgres bite -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";"

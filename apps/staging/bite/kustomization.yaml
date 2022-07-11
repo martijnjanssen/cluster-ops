@@ -5,9 +5,9 @@ resources:
   - ../../base/bite
   - ./secrets
   - namespace.yaml
+  - postgresql.yaml
 patchesStrategicMerge:
   - bite-values.yaml
-  - postgresql-values.yaml
 images:
   - name: ghcr.io/martijnjanssen/bite
     newName: ghcr.io/martijnjanssen/bite

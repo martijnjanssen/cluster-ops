@@ -19,15 +19,15 @@ spec:
     spec:
       containers:
         - name: bite
-          image: ghcr.io/martijnjanssen/bite:12
+          image: ghcr.io/martijnjanssen/bite:215
           imagePullPolicy: IfNotPresent
           env:
             - name: BITE_PORT
               value: "5051"
             - name: BITE_DBHOST
-              value: postgresql
+              value: "51.158.129.251"
             - name: BITE_DBPORT
-              value: "5432"
+              value: "62149"
             - name: BITE_DBNAME
               value: bite
             - name: BITE_DBUSER
@@ -105,5 +105,5 @@ spec:
     spec:
       containers:
         - name: bite-frontend
-          image: ghcr.io/martijnjanssen/bite-frontend:165
+          image: ghcr.io/martijnjanssen/bite-frontend:215
           imagePullPolicy: IfNotPresent
