@@ -6,3 +6,4 @@ resources:
   - ./secrets
   - namespace.yaml
   - bite-links-ingress.yaml
+  - bite-staging-prod-temp.yaml # TEMP STAGING TO PROD REDIRECTION
