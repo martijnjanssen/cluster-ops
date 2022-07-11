@@ -10,15 +10,15 @@ spec:
           env:
             - name: BITE_MAILCALLBACKURL
               value: https://links.biteapp.nl
-            - name: BITE_DBHOST
-              value: postgresql
-            - name: BITE_DBPORT
-              value: "5432"
-            - name: BITE_DBPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: postgresql-password
-                  name: staging-postgres-password
+            # - name: BITE_DBHOST
+            #   value: postgresql
+            # - name: BITE_DBPORT
+            #   value: "5432"
+            # - name: BITE_DBPASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       key: postgresql-password
+            #       name: staging-postgres-password
             - name: BITE_SENDINBLUEKEY
               valueFrom:
                 secretKeyRef:
