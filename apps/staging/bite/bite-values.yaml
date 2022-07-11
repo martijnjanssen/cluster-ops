@@ -12,6 +12,8 @@ spec:
               value: https://links.biteapp.nl
             - name: BITE_DBHOST
               value: postgresql
+            - name: BITE_DBPORT
+              value: "5432"
             - name: BITE_DBPASSWORD
               valueFrom:
                 secretKeyRef:
