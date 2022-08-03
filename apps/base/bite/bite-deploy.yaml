@@ -105,5 +105,5 @@ spec:
     spec:
       containers:
         - name: bite-frontend
-          image: ghcr.io/martijnjanssen/bite-frontend:235
+          image: ghcr.io/martijnjanssen/bite-frontend:236
           imagePullPolicy: IfNotPresent
