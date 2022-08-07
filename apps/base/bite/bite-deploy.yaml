@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: bite
-          image: ghcr.io/martijnjanssen/bite:240
+          image: ghcr.io/martijnjanssen/bite:242
           imagePullPolicy: IfNotPresent
           env:
             - name: BITE_PORT
@@ -105,5 +105,5 @@ spec:
     spec:
       containers:
         - name: bite-frontend
-          image: ghcr.io/martijnjanssen/bite-frontend:240
+          image: ghcr.io/martijnjanssen/bite-frontend:242
           imagePullPolicy: IfNotPresent
