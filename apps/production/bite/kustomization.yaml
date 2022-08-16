@@ -7,3 +7,10 @@ resources:
   - namespace.yaml
   - bite-links-ingress.yaml
   - bite-staging-prod-temp.yaml # TEMP STAGING TO PROD REDIRECTION
+images:
+  - name: ghcr.io/martijnjanssen/bite
+    newName: ghcr.io/martijnjanssen/bite
+    newTag: "242" # {"$imagepolicy": "flux-system:bite:tag"}
+  - name: ghcr.io/martijnjanssen/bite-frontend
+    newName: ghcr.io/martijnjanssen/bite-frontend
+    newTag: "242" # {"$imagepolicy": "flux-system:bite-frontend:tag"}
