@@ -58,12 +58,12 @@ spec:
                 secretKeyRef:
                   key: secret-access-key
                   name: aws-access
-            - name: GOOGLE_SERVICEACCOUNTJSON
+            - name: BITE_GOOGLE_SERVICEACCOUNTJSON
               valueFrom:
                 secretKeyRef:
                   key: serviceaccountjson
                   name: google-serviceaccountjson
-            - name: APPLE_APPSHAREDSECRET
+            - name: BITE_APPLE_APPSHAREDSECRET
               valueFrom:
                 secretKeyRef:
                   key: appsharedsecret
