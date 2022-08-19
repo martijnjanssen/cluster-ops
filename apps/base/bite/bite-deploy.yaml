@@ -58,6 +58,16 @@ spec:
                 secretKeyRef:
                   key: secret-access-key
                   name: aws-access
+            - name: GOOGLE_SERVICEACCOUNTJSON
+              valueFrom:
+                secretKeyRef:
+                  key: serviceaccountjson
+                  name: google-serviceaccountjson
+            - name: APPLE_APPSHAREDSECRET
+              valueFrom:
+                secretKeyRef:
+                  key: appsharedsecret
+                  name: apple-appsharedsecret
           # ports:
           #   - containerPort: 5051
           #     protocol: TCP
