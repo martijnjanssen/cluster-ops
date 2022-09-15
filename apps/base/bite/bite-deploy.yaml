@@ -48,6 +48,8 @@ spec:
               value: eu-central-1
             - name: BITE_AWS_BUCKETNAME
               value: bite-production-recipes-images
+            - name: BITE_AWS_RECIPESIMAGESBUCKETNAME
+              value: bite-production-recipes-images
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
