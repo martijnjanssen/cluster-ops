@@ -24,5 +24,5 @@ spec:
     admin:
       existingSecret: pihole-webpassword
     serviceDns:
-      loadBalancerIP: 192.168.1.3
+      loadBalancerIP: 192.168.178.3
       type: LoadBalancer
