@@ -10,4 +10,4 @@ patchesStrategicMerge:
 images:
   - name: ghcr.io/martijnjanssen/webhook-proxy
     newName: ghcr.io/martijnjanssen/webhook-proxy
-    newTag: "24" # {"$imagepolicy": "flux-system:webhook-proxy:tag"}
+    newTag: "25" # {"$imagepolicy": "flux-system:webhook-proxy:tag"}
