@@ -186,6 +186,7 @@ spec:
             - --insecure-bind-address=0.0.0.0
             - --insecure-port=9090
             - --enable-insecure-login
+            - --token-ttl=3600
           image: kubernetesui/dashboard:v2.3.1
           imagePullPolicy: Always
           livenessProbe:
