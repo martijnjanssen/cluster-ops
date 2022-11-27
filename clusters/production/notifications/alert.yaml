@@ -6,7 +6,7 @@ metadata:
 spec:
   providerRef:
     name: generic-provider
-  eventSeverity: error
+  eventSeverity: info
   eventSources:
     - kind: GitRepository
       name: "*"
