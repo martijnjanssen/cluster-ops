@@ -65,6 +65,11 @@ spec:
                 secretKeyRef:
                   key: serviceaccountjson
                   name: google-serviceaccountjson
+            - name: BITE_GOOGLE_FIREBASESERVICEACCOUNTJSON
+              valueFrom:
+                secretKeyRef:
+                  key: firebaseserviceaccountjson
+                  name: google-firebaseserviceaccountjson
             - name: BITE_APPLE_APPSHAREDSECRET
               valueFrom:
                 secretKeyRef:
