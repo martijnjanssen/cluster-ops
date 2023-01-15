@@ -50,6 +50,8 @@ spec:
               value: bite-production-recipes-images
             - name: BITE_AWS_PROFILESIMAGESBUCKETNAME
               value: bite-production-profiles-images
+            - name: BITE_AWS_STORIESIMAGESBUCKETNAME
+              value: bite-production-stories-images
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
