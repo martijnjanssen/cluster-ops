@@ -37,6 +37,9 @@ spec:
                 secretKeyRef:
                   key: postgresql-password
                   name: postgres-password
+
+            - name: BITE_SETTINGS_UNLOCKS=
+              value: 5
             - name: BITE_SENDINBLUEKEY
               valueFrom:
                 secretKeyRef:
