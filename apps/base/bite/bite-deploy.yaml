@@ -38,7 +38,7 @@ spec:
                   key: postgresql-password
                   name: postgres-password
 
-            - name: BITE_SETTINGS_UNLOCKS=
+            - name: BITE_SETTINGS_UNLOCKS
               value: 5
             - name: BITE_SENDINBLUEKEY
               valueFrom:
