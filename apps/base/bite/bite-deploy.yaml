@@ -40,7 +40,14 @@ spec:
 
             - name: BITE_SETTINGS_UNLOCKS
               value: "3"
+            - name: BITE_SENDINBLUE_CONTACTLISTID
+              value: "7"
             - name: BITE_SENDINBLUEKEY
+              valueFrom:
+                secretKeyRef:
+                  key: sendinbluekey
+                  name: sendinblue-secret
+            - name: BITE_SENDINBLUE_APIKEY
               valueFrom:
                 secretKeyRef:
                   key: sendinbluekey
