@@ -26,8 +26,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`http.bite.martijnj.nl`) && PathPrefix(`/`)
-      # middlewares:
-      # - name: ssl-redirect
+      middlewares:
+        - name: ssl-redirect
       services:
         - kind: Service
           name: bite-http
@@ -44,8 +44,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`bite.martijnj.nl`) && PathPrefix(`/`)
-      # middlewares:
-      # - name: ssl-redirect
+      middlewares:
+        - name: ssl-redirect
       services:
         - kind: Service
           name: bite-frontend
