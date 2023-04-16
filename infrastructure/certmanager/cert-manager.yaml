@@ -16,6 +16,6 @@ spec:
   releaseName: cert-manager
   targetNamespace: flux-system
   install:
-    crds: Create
+    crds: CreateReplace
   upgrade:
     crds: CreateReplace
