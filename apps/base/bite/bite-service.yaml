@@ -4,6 +4,8 @@ metadata:
   name: bite-grpc
   labels:
     app: bite
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
 spec:
   type: LoadBalancer
   ports:
