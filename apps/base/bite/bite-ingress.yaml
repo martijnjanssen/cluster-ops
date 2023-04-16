@@ -1,74 +1,61 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  creationTimestamp: null
   name: bite-grpc
+spec:
+  routes:
+    - kind: Rule
+      match: Host(`grpc.bite.martijnj.nl`) && PathPrefix(`/`)
+      services:
+        - kind: Service
+          name: bite-grpc
+          port: 80
+          scheme: h2c
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
-    ingress.kubernetes.io/protocol: h2c
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  rules:
-    - host: grpc.bite.martijnj.nl
-      http:
-        paths:
-          - backend:
-              service:
-                name: bite-grpc
-                port:
-                  number: 80
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - grpc.bite.martijnj.nl
-      secretName: grpc-bite-martijnj-nl-tls
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
+  creationTimestamp: null
   name: bite-http
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  rules:
-    - host: http.bite.martijnj.nl
-      http:
-        paths:
-          - backend:
-              service:
-                name: bite-http
-                port:
-                  number: 80
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - http.bite.martijnj.nl
-      secretName: http-bite-martijnj-nl-tls
+  routes:
+    - kind: Rule
+      match: Host(`http.bite.martijnj.nl`) && PathPrefix(`/`)
+      middlewares:
+        - name: ssl-redirect
+      services:
+        - kind: Service
+          name: bite-http
+          port: 80
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: bite-frontend
   annotations:
     kubernetes.io/ingress.class: traefik
-    ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+  creationTimestamp: null
+  name: bite-frontend
 spec:
-  rules:
-    - host: bite.martijnj.nl
-      http:
-        paths:
-          - backend:
-              service:
-                name: bite-frontend
-                port:
-                  number: 80
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - bite.martijnj.nl
-      secretName: bite-martijnj-nl-tls
+  routes:
+    - kind: Rule
+      match: Host(`bite.martijnj.nl`) && PathPrefix(`/`)
+      middlewares:
+        - name: ssl-redirect
+      services:
+        - kind: Service
+          name: bite-frontend
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: ssl-redirect
+spec:
+  headers:
+    sslRedirect: true
