@@ -50,12 +50,3 @@ spec:
         - kind: Service
           name: bite-frontend
           port: 80
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  creationTimestamp: null
-  name: ssl-redirect
-spec:
-  headers:
-    sslRedirect: true

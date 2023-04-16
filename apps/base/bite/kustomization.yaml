@@ -4,3 +4,4 @@ resources:
   - bite-deploy.yaml
   - bite-service.yaml
   - bite-ingress.yaml
+  - bite-middleware.yaml
