@@ -6,12 +6,13 @@ metadata:
 spec:
   chart:
     spec:
-      chart: jetstack/cert-manager
+      chart: cert-manager
       sourceRef:
         kind: HelmRepository
         name: jetstack
-      version: ">=1.0.0 <2.0.0"
-  interval: 1h0m0s
+      version: ">=1.0.0-0 <2.0.0-0"
+  interval: 5m
+  # interval: 1h0m0s
   releaseName: cert-manager
   targetNamespace: flux-system
   install:
