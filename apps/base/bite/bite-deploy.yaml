@@ -128,7 +128,7 @@ spec:
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: bite-frontend
