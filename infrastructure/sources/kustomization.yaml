@@ -4,4 +4,3 @@ namespace: flux-system
 resources:
   - pihole.yaml
   - sealedsecrets.yaml
-  - jetstack.yaml
