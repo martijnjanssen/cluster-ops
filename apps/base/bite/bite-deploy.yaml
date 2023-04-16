@@ -56,7 +56,7 @@ spec:
                   key: sendinbluekey
                   name: sendinblue-secret
             - name: BITE_MAILCALLBACKURL
-              value: http://links.biteapp.nl
+              value: https://links.biteapp.nl
             - name: BITE_AWS_SESSIONREGION
               value: eu-central-1
             - name: BITE_AWS_RECIPESIMAGESBUCKETNAME
