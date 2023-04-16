@@ -9,8 +9,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`links.biteapp.nl`) && PathPrefix(`/`)
-      middlewares:
-        - name: ssl-redirect
+      # middlewares:
+      # - name: ssl-redirect
       services:
         - kind: Service
           name: bite-frontend
