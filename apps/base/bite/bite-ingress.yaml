@@ -43,7 +43,7 @@ metadata:
 spec:
   routes:
     - kind: Rule
-      match: (Host(`bite.martijnj.nl`) || Host(`www.bite.martijnj.nl`)) && PathPrefix(`/`)
+      match: (Host(`bite.martijnj.nl`)) && PathPrefix(`/`)
       middlewares:
         - name: ssl-redirect
       services:
