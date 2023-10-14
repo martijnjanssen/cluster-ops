@@ -68,3 +68,8 @@ spec:
         - kind: Service
           name: bite-site
           port: 80
+  tls:
+    certResolver: letsencrypt-prod
+    domains:
+      - main: "biteapp.nl"
+    secretName: biteapp-nl-tls
