@@ -50,12 +50,6 @@ spec:
         - kind: Service
           name: bite-frontend
           port: 80
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - bite.martijnj.nl
-      secretName: bite-martijnj-nl-tls
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -74,9 +68,3 @@ spec:
         - kind: Service
           name: bite-site
           port: 80
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - biteapp.nl
-      secretName: biteapp-nl-tls
