@@ -142,3 +142,30 @@ spec:
         - name: bite-frontend
           image: ghcr.io/martijnjanssen/bite-frontend:242
           imagePullPolicy: IfNotPresent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bite-site
+  # namespace: bite
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: bite-site
+  template:
+    metadata:
+      name: bite-site
+      labels:
+        app: bite-site
+    spec:
+      containers:
+        - name: bite-site
+          image: ghcr.io/martijnjanssen/bite-site:610
+          imagePullPolicy: IfNotPresent
