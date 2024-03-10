@@ -28,9 +28,9 @@ spec:
             - name: BITE_PORT
               value: "5051"
             - name: BITE_DBHOST
-              value: "51.158.129.251"
+              value: "192.168.1.3"
             - name: BITE_DBPORT
-              value: "62149"
+              value: "5432"
             - name: BITE_DBNAME
               value: bite
             - name: BITE_DBUSER
