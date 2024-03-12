@@ -14,4 +14,4 @@ images:
     newTag: "617" # {"$imagepolicy": "flux-system:bite:tag"}
   - name: ghcr.io/martijnjanssen/bite-frontend
     newName: ghcr.io/martijnjanssen/bite-frontend
-    newTag: "617" # {"$imagepolicy": "flux-system:bite-frontend:tag"}
+    newTag: "622" # {"$imagepolicy": "flux-system:bite-frontend:tag"}
