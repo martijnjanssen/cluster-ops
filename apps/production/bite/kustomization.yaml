@@ -9,7 +9,7 @@ resources:
 images:
   - name: ghcr.io/martijnjanssen/bite
     newName: ghcr.io/martijnjanssen/bite
-    newTag: "639" # {"$imagepolicy": "flux-system:bite:tag"}
+    newTag: "640" # {"$imagepolicy": "flux-system:bite:tag"}
   - name: ghcr.io/martijnjanssen/bite-frontend
     newName: ghcr.io/martijnjanssen/bite-frontend
     newTag: "641" # {"$imagepolicy": "flux-system:bite-frontend:tag"}
