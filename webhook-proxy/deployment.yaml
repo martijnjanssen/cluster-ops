@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-proxy
+  namespace: homelab
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: webhook-proxy
+  template:
+    metadata:
+      name: webhook-proxy
+      labels:
+        app: webhook-proxy
+    spec:
+      containers:
+        - name: webhook-proxy
+          image: ghcr.io/martijnjanssen/webhook-proxy:49
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TELEGRAM_CHAT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: chat-id
+                  name: telegram-access
+            - name: TELEGRAM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: telegram-access
+          # ports:
+          #   - containerPort: 5051
+          #     protocol: TCP
+          #   - containerPort: 5081
+          #     protocol: TCP
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 20
+          #   successThreshold: 1
+          #   timeoutSeconds: 1
+          # readinessProbe:
+          #   failureThreshold: 5
+          #   httpGet:
+          #     path: /api/v1/management/health
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 5
+          #   successThreshold: 1
+          #   timeoutSeconds: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook-proxy
+  namespace: homelab
+  labels:
+    app: webhook-proxy
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: webhook-proxy
