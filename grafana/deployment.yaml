@@ -1,0 +1,65 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: homelab
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls.certresolver: acmecertresolver
+spec:
+  rules:
+    - host: grafana.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana
+                port:
+                  number: 2342
+            path: /
+            pathType: ImplementationSpecific
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: homelab
+spec:
+  type: ExternalName
+  externalName: 192.168.1.2
+  ports:
+    - port: 2342
+      protocol: TCP
+      targetPort: 2342
+---
+# Redirect to https
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: https-redirect
+  namespace: homelab
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-redirect
+  namespace: homelab
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: grafana-https-redirect@kubernetescrd
+spec:
+  rules:
+    - host: grafana.martijnj.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana
+                port:
+                  number: 2342
+            path: /
+            pathType: ImplementationSpecific
