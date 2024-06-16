@@ -50,7 +50,7 @@ metadata:
   namespace: homelab
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    # traefik.ingress.kubernetes.io/router.middlewares: homelab-https-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: homelab-https-redirect@kubernetescrd
 spec:
   rules:
     - host: grafana.martijnj.nl
