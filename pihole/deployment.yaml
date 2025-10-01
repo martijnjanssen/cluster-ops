@@ -24,41 +24,57 @@ spec:
         - name: pihole
           image: pihole/pihole:latest
           imagePullPolicy: IfNotPresent
-      env:
-        - name: TZ
-          value: Europe/Amsterdam
-      volumeMounts:
-        - mountPath: /etc/pihole
-          name: pihole-config
-  volumes:
-    - name: pihole-config
-      persistentVolumeClaim:
-        claimName: pihole-pvc
+          env:
+            - name: TZ
+              value: Europe/Amsterdam
+          volumeMounts:
+            - mountPath: /etc/pihole
+              name: pihole-config
+          ports:
+            - containerPort: 80
+              name: http-web
+      volumes:
+        - name: pihole-config
+          persistentVolumeClaim:
+            claimName: pihole-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: pihole
+  name: pihole-dns
   namespace: pihole
   labels:
     app: pihole
 spec:
   type: LoadBalancer
+  selector:
+    app: pihole
+  ports:
+    - name: dns-udp
+      port: 53
+      protocol: UDP
+      targetPort: 53
+    - name: dns-tcp
+      port: 53
+      protocol: TCP
+      targetPort: 53
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-web
+  namespace: pihole
+  labels:
+    app: pihole
+spec:
+  type: LoadBalancer
+  selector:
+    app: pihole
   ports:
     - name: http
       port: 80
       protocol: TCP
-      targetPort: 80
-    - name: dns-tcp
-      port: 53
-      protocol: TCP
-      hostPort: 53
-    - name: dns-udp
-      port: 53
-      protocol: UDP
-      hostPort: 53
-  selector:
-    app: pihole
+      targetPort: http-web
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -75,7 +91,7 @@ spec:
         paths:
           - backend:
               service:
-                name: pihole
+                name: pihole-web
                 port:
                   number: 80
             path: /
@@ -85,16 +101,9 @@ spec:
         paths:
           - backend:
               service:
-                name: pihole
+                name: pihole-web
                 port:
                   number: 80
-            path: /
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: pihole
-                port:
-                  number: 53
             path: /
             pathType: ImplementationSpecific
 ---
@@ -152,15 +161,3 @@ spec:
   resources:
     requests:
       storage: 2Gi
----
-# DNS Ports
-# - "53:53/tcp"
-# - "53:53/udp"
-# Default HTTP Port
-# - "80:80/tcp"
-# Default HTTPs Port. FTL will generate a self-signed certificate
-# - "443:443/tcp"
-# Uncomment the line below if you are using Pi-hole as your DHCP server
-#- "67:67/udp"
-# Uncomment the line below if you are using Pi-hole as your NTP server
-#- "123:123/udp"
