@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: homelab
+spec:
+  type: ExternalName
+  externalName: 192.168.1.2
+  ports:
+    - port: 2342
+      protocol: TCP
+      targetPort: 2342
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-internal
+  namespace: homelab
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - host: grafana.lan
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: grafana
+                port:
+                  number: 2342
