@@ -96,7 +96,7 @@ spec:
                   number: 80
             path: /
             pathType: ImplementationSpecific
-    - host: pihole.home.lan
+    - host: pihole.home
       http:
         paths:
           - backend:
@@ -138,7 +138,7 @@ spec:
                   number: 80
             path: /
             pathType: ImplementationSpecific
-    - host: pihole.home.lan
+    - host: pihole.home
       http:
         paths:
           - backend:
