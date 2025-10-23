@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: webhook-proxy
-          image: ghcr.io/martijnjanssen/webhook-proxy:49
+          image: ghcr.io/martijnjanssen/webhook-proxy:54
           imagePullPolicy: IfNotPresent
           env:
             - name: TELEGRAM_CHAT_ID
