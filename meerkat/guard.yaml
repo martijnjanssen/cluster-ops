@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guard
+  namespace: meerkat
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: guard
+  template:
+    metadata:
+      name: guard
+      labels:
+        app: guard
+    spec:
+      containers:
+        - name: guard
+          image: ghcr.io/skamoen/meerkat/guard:v0.0.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SERVER_ADDR
+              value: "0.0.0.0"
+            - name: SERVER_PORT
+              value: "4000"
+            - name: LOG_FORMAT
+              value: json
+            - name: LOG_LEVEL
+              value: debug
+          ports:
+            - containerPort: 4000
+              name: guard-h2c
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guard
+  namespace: meerkat
+  labels:
+    app: guard
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
+spec:
+  type: LoadBalancer
+  selector:
+    app: guard
+  ports:
+    - name: guard-h2c
+      port: 80
+      protocol: TCP
+      targetPort: 4000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: guard
+  namespace: meerkat
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls.certresolver: acmecertresolver
+spec:
+  rules:
+    - host: guard.martijnj.nl
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: guard
+                port:
+                  number: 80
