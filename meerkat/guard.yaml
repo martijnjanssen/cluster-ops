@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: guard
-          image: ghcr.io/skamoen/meerkat/guard:main
+          image: ghcr.io/skamoen/meerkat/guard:0.0.3
           imagePullPolicy: IfNotPresent
           env:
             - name: SERVER_ADDR
